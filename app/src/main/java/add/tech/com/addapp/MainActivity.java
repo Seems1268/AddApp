@@ -30,12 +30,15 @@ public class MainActivity extends ActionBarActivity {
         cal_btn = (Button) findViewById(R.id.cal_btn);
         result_txtview = (TextView) findViewById(R.id.result_txtview);
 
+        //cal_btn.setEnabled(false);
         cal_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 calAndDisplay();
             }
         });
+
+
     }
 
     private void calAndDisplay(){

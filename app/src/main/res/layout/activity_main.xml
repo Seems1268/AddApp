@@ -12,24 +12,28 @@
     <EditText
         android:id="@+id/num1_edittxt"
         android:layout_width="150dp"
-        android:layout_height="30dp" 
+        android:layout_height="60dp"
         android:layout_margin="10dp"
-        android:padding="10dp"
-        android:inputType="numberSigned"/>
+        android:numeric="integer"
+        android:inputType="number"
+        android:maxLength="9"
+        android:padding="10dp"/>
 
     <EditText
         android:id="@+id/num2_edittxt"
         android:layout_width="150dp"
-        android:layout_height="30dp"
+        android:layout_height="60dp"
         android:layout_margin="10dp"
         android:padding="10dp"
-        android:inputType="numberSigned"
+        android:numeric="integer"
+        android:inputType="number"
+        android:maxLength="9"
         android:layout_below="@id/num1_edittxt"/>
     
     <Button
         android:id="@+id/cal_btn"
         android:layout_width="150dp"
-        android:layout_height="30dp"
+        android:layout_height="60dp"
         android:layout_below="@id/num2_edittxt"
         android:text="Calculate"
         android:textAlignment="center"
@@ -43,6 +47,5 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/cal_btn"
         android:textSize="15sp"
-        android:layout_margin="20dp"
-        android:text="Hello World"/>
+        android:layout_margin="20dp"/>
 </RelativeLayout>
