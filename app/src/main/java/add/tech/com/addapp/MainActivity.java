@@ -8,6 +8,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
 
 public class MainActivity extends ActionBarActivity {
 
@@ -15,6 +18,8 @@ public class MainActivity extends ActionBarActivity {
     private EditText num2_txt;
     private Button cal_btn;
     private TextView result_txtview;
+    boolean isNum1 = false;
+    boolean isNum2 = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +35,7 @@ public class MainActivity extends ActionBarActivity {
         cal_btn = (Button) findViewById(R.id.cal_btn);
         result_txtview = (TextView) findViewById(R.id.result_txtview);
 
-        //cal_btn.setEnabled(false);
+        cal_btn.setEnabled(false);
         cal_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -38,6 +43,57 @@ public class MainActivity extends ActionBarActivity {
             }
         });
 
+        num1_txt.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                Log.d("TAG","after text changed to......."+s.toString());
+                if(!s.toString().trim().isEmpty() && !"".equals(s.toString()))
+                    isNum1 = true;
+                else
+                    isNum1 = false;
+
+                if(isNum1 && isNum2)
+                    cal_btn.setEnabled(true);
+                else
+                    cal_btn.setEnabled(false);
+            }
+        });
+
+        num2_txt.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                Log.d("TAG","after text changed to......."+s.toString());
+                if(!s.toString().trim().isEmpty() && !"".equals(s.toString()))
+                    isNum2 = true;
+                else
+                    isNum2 = false;
+
+                if(isNum1 && isNum2)
+                    cal_btn.setEnabled(true);
+                else
+                    cal_btn.setEnabled(false);
+            }
+        });
 
     }
 
@@ -45,7 +101,7 @@ public class MainActivity extends ActionBarActivity {
 
         int result = Integer.parseInt(num1_txt.getText().toString()) + Integer.parseInt(num2_txt.getText().toString());
 
-        result_txtview.setText(String.valueOf(result));
+        result_txtview.setText("Addition of two integers is: "+String.valueOf(result));
     }
 
     @Override
